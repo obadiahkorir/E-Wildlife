@@ -109,12 +109,12 @@ include("../config.php");
 		<ul class="toggle">
 			 <li class="icn_add_user"><a href="add_new_reservations.php">Add Reservations</a></li>
 		    <li class="icn_categories"><a href="viewReservations.php">Reservation Details</a></li>
-     		<li class="icn_categories"><a href="customerTable.php">Cancel Reservations</a></li>
-     		<li class="icn_categories"><a href="customerTable.php">Approve  Reservations</a></li>
+     		<li class="icn_categories"><a href="cancelReservations.php">Cancel Reservations</a></li>
+     		
 		</ul>
 		<h3>TOURIST OPERATIONS:</h3>
 		<ul class="toggle">
-			 <li class="icn_add_user"><a href="add_new_reservations.php">Add Tourist</a></li>
+			 <li class="icn_add_user"><a href="add_reservations.php">Add Tourist</a></li>
 		    <li class="icn_categories"><a href="viewReservations.php">Tourist Details</a></li>
 		</ul>
 		<h3>Admin</h3>

@@ -21,17 +21,18 @@ if($count==1)
 session_start();
 $_SESSION['session_email']=$_POST['login_email'];
 
-			if($cat=="Tourist")
+			if($cat=="Admin")
 			{
-			echo"<script type='text/javascript'>var x=alert('Successfully Login As Tourist');";
-				  echo"window.location='Customer/customer_home.php'";
+				echo"<script type='text/javascript'>var x=alert('Successfully Login As Admin');";
+				  echo"window.location='Admin/index.php'";
 echo"</script>";
+			
 
 			
 			}			
 			else{
-			echo"<script type='text/javascript'>var x=alert('Successfully Login As Admin');";
-				  echo"window.location='Admin/index.php'";
+			echo"<script type='text/javascript'>var x=alert('Successfully Login As Tourist');";
+				  echo"window.location='Customer/customer_home.php'";
 echo"</script>";
 
 			}

@@ -14,11 +14,7 @@ include("config.php");
 	<link rel="stylesheet" href="css/proStyle.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/userlogin.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/chatStyle.css" type="text/css" media="screen" /> 
-	 <link rel="stylesheet" href="css/audioplayer.css"  type="text/css" media="screen" />
-		<script>
-			
-			(function(doc){var addEvent='addEventListener',type='gesturestart',qsa='querySelectorAll',scales=[1,1],meta=qsa in doc?doc[qsa]('meta[name=viewport]'):[];function fix(){meta.content='width=device-width,minimum-scale='+scales[0]+',maximum-scale='+scales[1];doc.removeEventListener(type,fix,true);}if((meta=meta[meta.length-1])&&addEvent in doc){fix();scales=[.25,1.6];doc[addEvent](type,fix,true);}}(document));
-		</script>
+	<link rel="stylesheet" href="css/audioplayer.css"  type="text/css" media="screen" />
 	<script src="js/jquery-1.6.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/cufon-yui.js" type="text/javascript"></script>
 	<script src="js/Myriad_Pro_700.font.js" type="text/javascript"></script>
@@ -94,7 +90,7 @@ $(document).ready(function() {
 	
 		<div id="header">
 			<div class="shell">
-					<center><h2><big> E-WILDLIFE MANAGEMENT SYSTEM</big> </h2></center>
+					<center><h2><big> E-WILDLIFE RESERVATION SYSTEM</big> </h2></center>
 				<h1 id="logo"><a class="notext" href="index.php" title="E-Wildlife">E-WildLife</a></h1>
 				
 				<div id="top-nav">
@@ -233,7 +229,6 @@ $(document).ready(function() {
 		  <?php
   
 	$current_url = base64_encode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-    
 	$results = $conn->query("SELECT * FROM animals ORDER BY animals_id ASC");
     if ($results) { 
 	

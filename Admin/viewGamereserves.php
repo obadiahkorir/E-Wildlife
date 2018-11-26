@@ -187,7 +187,7 @@ $result = mysqli_query($conn,"SELECT * FROM reserves");
 	<td><?php echo $row['email']; ?></td>
 	<td><img src="../images/<?php echo $row['picture']; ?>" width="40" height="40"></td>
     <td> <a href="wareViewUpdate.php?update=<?php echo $row['id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+     <a href="delete_gamereserve.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
 
   <?php }mysqli_close($conn);?>

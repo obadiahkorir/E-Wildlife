@@ -40,8 +40,8 @@ include("../config.php");
                      <li><a href="Employee.php">Employees</a></li>
                      <li><a href="Tourist_home.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
-                     <li><a href="add_category.php">Reservations</a></li>
-                       <li><a href="add_category.php">Payments</a></li>
+                     <li><a href="add_new_reservations.php">Reservations</a></li>
+                       <li><a href="ViewPayments.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
@@ -96,8 +96,8 @@ include("../config.php");
 		
         <h3>Tables:</h3>
 		<ul class="toggle">
-		    <li class="icn_categories"><a href="order.php">Reservation Details</a></li>
-     		<li class="icn_categories"><a href="customerTable.php">Tourist Details</a></li>
+		    <li class="icn_categories"><a href="viewReservation.php">Reservation Details</a></li>
+     		<li class="icn_categories"><a href="viewTourist.php">Tourist Details</a></li>
 		</ul>
 
 		<h3>Admin</h3>
@@ -230,7 +230,8 @@ $result = mysqli_query($conn,"SELECT * FROM employee");
 	<td><?php echo $row['Pay_Roll']; ?></td>
 	<td><?php echo $row['IdNumber']; ?></td>
 	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td>
-    
+    <td> <a href="reserves_view_update.php?update=<?php echo $row['Employee_ID']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
+     <a href="delete_employee.php?delete=<?php echo $row['Employee_ID']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
 
   <?php }mysqli_close($conn);?>

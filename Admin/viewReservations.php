@@ -164,7 +164,7 @@ $result = mysqli_query($conn,"SELECT * FROM bookings");
    <td><?php echo $row['Adress']; ?></td>
    <td><?php echo $row['PostalCode']; ?></td>
     <td> <a href="wareViewUpdate.php?update=<?php echo $row['Reserved_Id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['Reserved_Id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+     <a href="delete_reservations.php?delete=<?php echo $row['Reserved_Id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
     </tr>
 

@@ -10,96 +10,12 @@ include("../config.php");
 <link href="css/bootstrap.min.css" rel="stylesheet" />
       <link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
-<link rel="shortcut icon" href="images/favicon.png" />
+<link rel="shortcut icon" href="images/logo.png" />
 	<link rel="stylesheet" href="css/chatStyle.css" type="text/css" media="screen" />
 	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() 
-    	{ 
-      	  $(".tablesorter").tablesorter(); 
-   	 } 
-	);
-	$(document).ready(function() {
-	$(".tab_content").hide(); //Hide all content
-	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
-	$(".tab_content:first").show(); //Show first tab content
-	$("ul.tabs li").click(function() {
-
-		$("ul.tabs li").removeClass("active"); //Remove any "active" class
-		$(this).addClass("active"); //Add "active" class to selected tab
-		$(".tab_content").hide(); //Hide all tab content
-
-		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		$(activeTab).fadeIn(); //Fade in the active ID content
-		return false;
-	});
-
-});
-  <script type="text/javascript">
-$(document).ready(function() {
-
-	// load messages every 1000 milliseconds from server.
-	load_data = {'fetch':1};
-	window.setInterval(function(){
-	 $.post('shout.php', load_data,  function(data) {
-		$('.message_box').html(data);
-		var scrolltoh = $('.message_box')[0].scrollHeight;
-		$('.message_box').scrollTop(scrolltoh);
-	 });
-	}, 1000);
-	
-	//method to trigger when user hits enter key
-	$("#shout_message").keypress(function(evt) {
-		if(evt.which == 13) {
-				var iusername = $('#shout_username').val();
-				var imessage = $('#shout_message').val();
-				post_data = {'username':iusername, 'message':imessage};
-			 	
-				//send data to "shout.php" using jQuery $.post()
-				$.post('shout.php', post_data, function(data) {
-					
-					//append data into messagebox with jQuery fade effect!
-					$(data).hide().appendTo('.message_box').fadeIn();
-	
-					//keep scrolled to bottom of chat!
-					var scrolltoh = $('.message_box')[0].scrollHeight;
-					$('.message_box').scrollTop(scrolltoh);
-					
-					//reset value of message box
-					$('#shout_message').val('');
-					
-				}).fail(function(err) { 
-				
-				//alert HTTP server error
-				alert(err.statusText); 
-				});
-			}
-	});
-	
-	//toggle hide/show shout box
-	$(".close_btn").click(function (e) {
-		//get CSS display state of .toggle_chat element
-		var toggleState = $('.toggle_chat').css('display');
-		
-		//toggle show/hide chat box
-		$('.toggle_chat').slideToggle();
-		
-		//use toggleState var to change close/open icon image
-		if(toggleState == 'block')
-		{
-			$(".header div").attr('class', 'open_btn');
-		}else{
-			$(".header div").attr('class', 'close_btn');
-		}
-		 
-		 
-	});
-});
-
-</script>
 </head>
 <body>
 <div id="container">
@@ -119,16 +35,14 @@ $(document).ready(function() {
             <nav>
                 <ul>
                     <li class="selected"><a href="customer_home.php">HOME</a></li>
-                    <li><a href="Register_Details.php">REGISTER</a></li>
                     <li><a href="Bookings.php">BOOKINGS</a></li>
                     <li><a href="ViewBookings.php">VIEW BOOKINGS</a></li>
                     <li><a href="SearchSite.php">SEARCH SITE</a></li>
                     <li><a href="Profile.php">VIEW PROFILE</a></li>
                     <li><a href="ViewAnimals.php">VIEW ANIMALS</a></li>
-                    <li><a href="ViewNews.php">NEWS</a></li>
                     <li><a href="ViewGameparks.php">VIEW GAMEPARKS</a></li>
                     <li><a href="ViewGameReserves.php">VIEW GAMERESERVES</a></li>
-                    <li><a href="PaymentsProcess.php">CHATS</a></li>
+                    <li><a href="ViewChats.php">CHATS</a></li>
                     <li class="logout"> <span class="check"> 				
                 </ul>			
             </nav>	
@@ -145,16 +59,16 @@ $(document).ready(function() {
 		<hr/>
 	    <h3> CUSTOMER OPEARTIONS</h3>
 		<ul class="toggle">
-		    <li class="icn_categories"><a href="Register_Details.php">Registration</a></li>
-		     <li class="icn_categories"><a href="Profile.php">View Profile</a></li>
 		      <li class="icn_categories"><a href="Bookings.php">Bookings</a></li>
 		        <li class="icn_categories"><a href="ViewBookings.php">View Bookings</a></li>
+		         <li class="icn_categories"><a href="ViewBookings.php">Cancel Bookings</a></li>
 		        <li class="icn_categories"><a href="ViewTourists.php">Tourist Details</a></li>
+		     <li class="icn_categories"><a href="Profile.php">View Profile</a></li>
 		        <li class="icn_categories"><a href="ViewChats.php">Chats</a></li
 		</ul>
 		<h3>GAMERESERVATIONS:</h3>
 		<ul class="toggle">
-		    <li class="icn_settings"><a href="ViewGameReserves.php.php">View GameReserves</a></li>
+		    <li class="icn_settings"><a href="ViewGameReserves.php">View GameReserves</a></li>
 		</ul>
 		<h3>GAMEPARK:</h3>
 		<ul class="toggle">
@@ -175,74 +89,139 @@ $(document).ready(function() {
 		</ul>
 	</aside>
 	<section id="main" class="column">
-		<h4 class="alert_info"><strong>E-WILDLIFE MANAGEMENT SYSTEM- TOURIST DASHBORD</strong></h4> 
-		<article class="module width_full">
-			<header><h3>DAYLY STATISTICS</h3></header>
-			<div class="module_content">
-				<article class="stats_graph">
-					<img src="http://chart.apis.google.com/chart?chxr=0,0,3000&chxt=y&chs=520x140&cht=lc&chco=76A4FB,80C65A&chd=s:Tdjpsvyvttmiihgmnrst,OTbdcfhhggcTUTTUadfk&chls=2|2&chma=40,20,20,30" width="520" height="140" alt="" />
-				</article>
-				
-				<article class="stats_overview">
-					<div class="overview_today">
-						<p class="overview_day">Today</p>
-						<p class="overview_count">1,876</p>
-						<p class="overview_type">Hits</p>
-						<p class="overview_count">2,103</p>
-						<p class="overview_type">Views</p>
-					</div>
-					<div class="overview_previous">
-						<p class="overview_day">Yesterday</p>
-						<p class="overview_count">1,646</p>
-						<p class="overview_type">Hits</p>
-						<p class="overview_count">2,054</p>
-						<p class="overview_type">Views</p>
-					</div>
-				</article>
+	<h4 class="alert_info"><strong>RESERVATIONS MANAGEMENT DASHBORD</strong></h4>			
+	<div id="form_wrapper" class="form_wrapper">
+		 <table>
+					<form class="register active" id="myForm"action="insertReservations.php"  method="POST" >
+
+					<th colspan="3"><h2>KINDLY MAKE RESERVATIONS FOR YOUR BEST SITE</h2> </th> 	
+        <tr>
+       <td>  
+	  <label>Full Names:</label>
+		
+		<input type="text" id="empValid" name="fullname"  placeholder="Full name" required="" />
+		<span class="error">This is an error</span>
+	  </td>
+      <td>   
+
+	     <label>Username:</label>
+		<input type="text" id="username" name="username" placeholder="User name" required="" />
+		<span class="error">This is an error</span>
+      </td>
+      <td>   
+	     <label>Address:</label>
+		<input type="text" id="address" name="address" placeholder="Address" required="" />
+		<span class="error">This is an error</span>
+      </td>
+		</tr>
+    <tr>
+         <td>
+		<label>Postal Code:</label>
+		<input type="text" id="pcode" name="pcode" placeholder="Postal Code" required="" />
+		<span class="error">This is an error</span>                        
+	</td>
+
+       <td>  
+		<label>No Of People:</label>
+		<input type="text" id="no" name="no" placeholder="No of People" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+ <td>  
+		<label>Reserved Site:</label>
+		<input type="text" id="site" name="site" placeholder="Reserved site" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+   </tr>
+   <tr>
+         <td>  
+		<label> From Date:</label>
+		<input type="date" name="from_date" id="from_date"  required>
+		<span id="pass-info"> </span>
+                               
+	    </td>
+		
+       <td>  
+		<label>To Date:</label>
+		<input type="date" id="to_date" name="to_date" required="" />
+		<span class="error" >This is an error</span>                       
+	</td>
+ <td>  
+		<label>Entrence Fee:</label>
+		<input type="text" id="fee" name="fee" placeholder="Entrance Fee" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+   </tr>
+   <tr>
+       
+ <td>  
+		<label>Email Address:</label>
+		<input type="text" id="email" name="email" placeholder="Email Address" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+   </tr>
+   <tr>
+   </tr>
+		<div class="bottom">
+			<td colspan="3">		
+				<button name="submit" id="submit" title="Click to Save"  class="a-btn"> <span class="a-btn-text">Make Reservation</span></button>	
+				</td>		
 				<div class="clear"></div>
-			</div>
-		</article>		
-		<?php
-$result = mysqli_query($conn,"SELECT * FROM contact");
+				</div>
+	</form>			
+	</table>
+	</div>
+<?php
+$result = mysqli_query($conn,"SELECT * FROM bookings where email='$login_session'");
 ?>
- <div id="tab2" class="tab_content">
-  <table class="tablesorter" cellspacing="0"> 
-      <thead>
-		<thead><th colspan="7"> REVIEWS AND COMPLAINTS </th></thead>
+      <div id="tab1" class="tab_content">
+  <table class="tablesorter" cellspacing="0"> 	
+		<thead><tr> <th colspan="7">Tourits Availlable Reservations</th>  </tr> <thead>
 		<thead>
-			</tr>
+			<tr>
    		    <th>Check</th> 
-    	    <th>ID</th>
-            <th>Name</th>			  
-    		<th>Email</th>
-		    <th>TellePhone</th>	
-             <th>Comment</th>				
-    		<th>Actions</th>
+    	    <th>Reservation ID</th>
+    	    <th>USERNAME</th>	
+    	    <th>EMAIL</th>	
+            <th>Full Names</th>			  
+    		<th>No Of People</th>
+		    <th>From Date</th>
+           <th>To Date</th>		
+           <th>Reserved Site</th>		
+           <th>Entrance Fee</th>		
+           <th>Address</th>			
+    	  <th>Postal Code</th>
 			</tr>
 		</thead>
 		<tbody>
 <?php while($row = mysqli_fetch_array($result))
   {?>
-    <tr>
-    <td><input type="checkbox"></td>
-    <td><?Php echo $row['contact_id']; ?></td>
-    <td><?php echo $row['Name']; ?></td>
-   <td><?php echo $row['Email']; ?></td>
-	<td><?php echo $row['Phone']; ?></td>
-	<td><?php echo $row['Subject']; ?></td>
-    <td> <a href="conDelete.php?delete=<?php echo $row['contact_id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
-     <td> <a href="conDelete.php?delete=<?php echo $row['contact_id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_edit.png" title="Edit">  </a></td>
-    </tr
+      <tr>
+   <td><input type="checkbox"></td>
+   <td><?Php echo $row['Reserved_Id']; ?></td>
+   <td><?php echo $row['Username']; ?></td>
+   <td><?php echo $row['email']; ?></td>
+   <td><?php echo $row['FullNames']; ?></td>
+   <td><?php echo $row['No_Of_People']; ?></td>
+   <td><?php echo $row['From_Date']; ?></td>
+   <td><?php echo $row['To_Date']; ?></td>
+   <td><?php echo $row['Site']; ?></td>
+   <td><?php echo $row['Price']; ?></td>
+   <td><?php echo $row['Adress']; ?></td>
+   <td><?php echo $row['PostalCode']; ?></td>
+    <td> <a href="wareViewUpdate.php?update=<?php echo $row['Reserved_Id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
+     <a href="DeleteWarehouse.php?delete=<?php echo $row['Reserved_Id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+    </tr>
+    </tr>
   <?php }mysqli_close($conn);?>
-</tbody>
-</table>
-		</div>   
-        </div>
-        </div>
-		<div class="clear"></div>
-		<div class="spacer"></div>
+      </tbody>
+</table>  
+ </div>
 	</section>
+    </div>
    </div>
-</div>
 </body>
 </html>

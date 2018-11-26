@@ -1,23 +1,20 @@
 <?php 
-session_start();
+include("../session.php");
 include("../config.php");
+
  ?>
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8"/>
-	<title>E-WildLife </title>
+	<title>Admin </title>
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
 	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
-	
-
 </head>
-
-
+<body>
 <body>
 <div id="container"> 
 	   <div id="header">
@@ -30,7 +27,6 @@ include("../config.php");
 		</div>
 		</div> 
 	<div id="content-wrap">	
-	
 	<section id="secondary_bar">
                 <nav>
                 <ul>
@@ -51,8 +47,8 @@ include("../config.php");
 	</section>  	
 <aside id="sidebar" class="column">
 				<div id="search">
-					<form action="searchware.php" method="post" accept-charset="utf-8">
-						<input type="text"  title="Search..." class="blink field"  placeholder="Search Warehouse"   name='search' size=60 maxlength=100 />
+					<form action="searchanimals.php" method="post" accept-charset="utf-8">
+						<input type="text"  title="Search..." class="blink field"  placeholder="Search Animals"   name='search' size=60 maxlength=100 />
 						<input class="search-button" type="submit" value="Submit" />
 						<div class="cl">&nbsp;</div>
 					</form>
@@ -103,7 +99,7 @@ include("../config.php");
 		<ul class="toggle">
 			 <li class="icn_add_user"><a href="add_new_reservations.php">Add Reservations</a></li>
 		    <li class="icn_categories"><a href="viewReservations.php">Reservation Details</a></li>
-     		<li class="icn_categories"><a href="cancelReservations.php">Cancel Reservations</a></li>
+     		<li class="icn_categories"><a href="customerTable.php">Cancel Reservations</a></li>
      		<li class="icn_categories"><a href="customerTable.php">Approve  Reservations</a></li>
 		</ul>
 		<h3>TOURIST OPERATIONS:</h3>
@@ -119,83 +115,92 @@ include("../config.php");
 	</aside>
 	<section id="main" class="column">
 	<h4 class="alert_info">Welcome To <strong>E-WILDLIFE MAMAGEMENT SYSTEM</strong> </h4>
-	
+	<section id="main" class="column">	
+<?php
+$update=$_GET['update'];
+$result = mysqli_query($conn,"SELECT * FROM Gamepark where Gamepark_ID ='$update'");
+?>
+<?php if($row = mysqli_fetch_array($result))
+  {?> 
+  
 	<div id="form_wrapper" class="form_wrapper"  >
+	<form class="quick_search">
+	<input type="text"  value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
 		 <table>
-					<form class="register active" id="myForm" action="insertAnimals.php"  method="POST" enctype="multipart/form-data" name="addanimals" onsubmit="return validateForm()">
-					<th colspan="3"><h2>ADD NEW ANIMAL:</h2> </th> 			
+		<form class="register active" id="myForm" action="wareUpdate.php"  method="POST">
+		<th colspan="3"><h2>UPDATE GAMEPARKS:</h2> </th> 			
+	<input type="hidden" id="ID" name="ID" value="<?php echo $row['Gamepark_ID'];?>"  placeholder="ID" required>
 	<tr>
     <td>  
 		<label> Animal Name:</label>
-		<input type="text" name="wname" id="wareValid"/>
+		<input type="text" name="a_name" id="wname"  value="<?php echo $row['Gamepark'];?>"  placeholder="Warehouse Name" required>
 		<span class="error">This is an error</span>
 	</td>
    <td>  
 	<label>County:</label>
-		<select name="country" id="select">
-		  <option value="KY" countrynum="93">TAITA TAVETA</option>
-		  <option value="US" countrynum="358">NAIROBI</option>
-		  <option value="CHI" countrynum="355">UASIN-NGISHU</option>
+		<select name="country" id="select"  value="<?php echo $row['County'];?>"  placeholder="Select County" required>
+	<option value="Kilifi" countynum="1">Kilifi</option>
+	<option value="Mombasa" countrnum="2">Mombasa</option>
+	<option value="Homa Bay" countrnum="3">Homa Bay</option>
 </select>    
    </td>
    <td>  
-		<label>Email:</label>
-		<input type="text" name="email" id="email"/>
-		<span class="error">This is an error</span>
-		
-	</td>
-
-   </tr>
-
-   <tr>
-    <td>  
-		<label> Gamepark:</label>
-		<input type="text" name="wname" id="wareValid"/>
-		<span class="error">This is an error</span>
-	</td>
-   <td>  
-	<label>Category:</label>
-		<select name="country" id="select">
-		  <option value="KY" countrynum="93">Birds</option>
-		  <option value="US" countrynum="358">Animals</option>		 
-</select>    
-   </td>
-   <td>  
-		<label>Type:</label>
-		<input type="text" name="email" id="email"/>
-		<span class="error">This is an error</span>	
+	<label>No Of Animals:</label>
+	<input type="text" name="email" id="email" value="<?php echo $row['animals'];?>"  placeholder="Email" required>
+	<span class="error">This is an error</span>	
 	</td>
    </tr>
-   <tr>
-    <td>  
-		<label> Address:</label>
-		<input type="text" name="address"  id="address"/>
+  <tr>
+  <td>  
+<label> Description:</label>
+	<input type="text" name="address"  id="address" value="<?php echo $row['Address'];?>"  placeholder="Address" required>
 		<span class="error">This is an error</span>                         
 	</td>
-   <td
-       		<label>Total:</label>
-		<input type="text" name="city"  id="wareValid"/>	
-		<span class="error">This is an error</span>	
+   <td>  
+   <label>Entry Fee:</label>
+	<input type="text" name="city"  id="city" value="<?php echo $row['Price'];?>"  placeholder="City" required>
+<span class="error">This is an error</span>		
   </td>
-   <td>       
-	    <label> Postal Code:</label>
-	<input type="text" name="pcode"  id="pcode"/>
+   <td>         
+   <label>Tota Animals:</label>
+	<input type="text" name="pcode"  id="pcode" value="<?php echo $row['PostalCode'];?>"  placeholder="Postal Code" required>
 		<span id="pass-info"> </span>
-   </td>
-   </tr>
+  </td>
+  </tr>
    <tr>
-						<div class="bottom">
-						<td colspan="3">	
-						<button name="save" id="myButton" class="a-btn"> <span class="a-btn-text"> REGISTER ANIMAL </span></ </button>
-							<div class="clear"></div>
-						</div>
-   </tr>
+  <td>  
+<label> Picture:</label>
+<input type="text" name="address"  id="address" value="<?php echo $row['Picture'];?>"  placeholder="Address" required>
+<span class="error">This is an error</span>                         
+</td>
+<td>         
+  <label>Email Address:</label>
+<input type="text" name="pcode"  id="pcode" value="<?php echo $row['Email'];?>"  placeholder="Postal Code" required>
+<span id="pass-info"> </span>
+ </td>
+ </tr>
+<tr>
+<td>         
+<label>Telephone:</label>
+<input type="text" name="pcode"  id="pcode" value="<?php echo $row['Telephone'];?>"  placeholder="Telephone" required>
+<span id="pass-info"> </span>
+ </td>
+ </tr>
+ <tr>
+<div class="bottom">
+<td colspan="3">	
+<button type="submit"  name="submit"  class="a-btn"><span class="a-btn-text">Update Gamepark</span></button>		
+<div class="clear"></div>
+</div>						
+</tr>
 </form>
 </table>
-	</div>	
-	</section>
-          </div>
-   </div>
+</div>     
+</div> 
+<?php }?>	
+</section> 
+</div>
+</div>
 </body>
-
 </html>

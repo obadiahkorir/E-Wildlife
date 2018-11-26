@@ -98,7 +98,6 @@ return true;
                     <li><a href="Register_Details.php">REGISTER</a></li>
                     <li><a href="Bookings.php">BOOKINGS</a></li>
                     <li><a href="ViewBookings.php">VIEW BOOKINGS</a></li>
-                    <li><a href="SearchSite.php">SEARCH SITE</a></li>
                     <li><a href="Profile.php">VIEW PROFILE</a></li>
                     <li><a href="ViewAnimals.php">VIEW ANIMALS</a></li>
                     <li><a href="ViewNews.php">NEWS</a></li>
@@ -184,133 +183,72 @@ return true;
             });
         });
     </script>
+<div id="form_wrapper" class="form_wrapper">
+		 <table>
 
+			<form class="register active" id="myForm"action="confirmpayment.php"  method="POST">
 
-  
-      			<div id="tab2" class="tab_content">
+					<th colspan="3"><h2>KINDLY PROCEED WITH PAYMENTS.</h2> </th> 	
+        <tr>		
+		</tr>
+    <tr>
+         <td>
+		<label>PAYMENT AMOUNT:</label>
+		<input type="text" id="amount" name="amount" required="" />
+		<span class="error">This is an error</span>                        
+	</td>
 
-  <table class="tablesorter" cellspacing="0"> 
-
-			
-			<thead><tr> <th colspan="7"><h2>Kindly Make Payments To Finalize Your Reservations</h2></th>  </tr> <thead>
-		<thead>
+       <td>  
+		<label>M-PESA TRANSACTION:</label>
+		<input type="text" id="mpesa" name="mpesa" placeholder="NAGHDSFAHSDF" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+ <td>  
+		<label>ID NUMBER:</label>
+		<input type="text" id="ids" name="ids" required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+   </tr>
+   <tr>
+         <td>  
+		<label>NO OF PEOPLE:</label>
+		<input type="text" name="people" id="people"  required>
+		<span id="pass-info"> </span>
+                               
+	    </td>
 	
-    		
-			</tr>
-		</thead>
-		<tbody>
-      <tr>
-    <div >
+   </tr>
+   <tr>
+       
+ <td>  
+		<label>Email Address:</label>
+		<input type="text" id="email" name="email"  required="" />
+		<span class="error">This is an error</span>
+                               
+	</td>
+   </tr>
+   <tr>
+   </tr>
+		<div class="bottom">
+			<td colspan="3">		
+				<button name="submit" id="submit" title="Click to Save"  class="a-btn"> <span class="a-btn-text">Comfirm Reservation</span></button>	
+				</td>		
+				<div class="clear"></div>
+				</div>
+	</form>			
+	</table>
 
-            <td colspan="3">  
-          <a href="payment checkout/process.php"><img src="" alt="" /><button name="save" type="submit" id="delbutton" title="Click to Save"  class="a-btn" > <span class="a-btn-text"> PROCEED WITH LIPA NA M-PESA</span></button></a>
-         
-            </div>
-   
     </tr>
- <tr>
-    <div class="bottom">
+    </tr>
 
-            <td colspan="3">  
-           <button name="save" type="submit" id="delbutton" title="Click to Save"  class="a-btn" > <span class="a-btn-text"> PROCEED WITH M-PESA BANK MONEY TRANSFER</span></button>
-            </div>
-   
-    </tr>
-    <tr>
-    <div class="bottom">
-
-            <td colspan="3">  
-           <button name="save" type="submit" id="delbutton" title="Click to Save"  class="a-btn" > <span class="a-btn-text"> PROCEED WITH BITCOINS</span></button>
-            </div>
-   
-    </tr>
-    <tr>
-    <div class="bottom">
-
-            <td colspan="3">  
-           <button name="save" type="submit" id="delbutton" title="Click to Save"  class="a-btn" > <span class="a-btn-text"> PROCEED WITH PAYPAL</span></button>
-            </div>
-   
-    </tr>
-  
       </tbody>
-</table>
-	  
- </div> 
-					
-					</table>
-					
-
-		<script src="js/jquery.js"></script>
-		  <script type="text/javascript">
-		$(function() {
-
-
-		$("#delbutton").click(function(){
-
-		//Save the link in a variable called element
-		var element = $(this);
-
-		 if(confirm("Now(), You Pressed M-Pesa Payments \n Are You Ready To Pay With M-Pesa?"))
-				  {
-
-		 $.ajax({
-		   type: "GET",
-		   url: "payment checkout/process.php",
-		   data: info,
-		   success: function(){
-		   
-		   }
-		 });
-				 $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-				.animate({ opacity: "hide" }, "slow");
-
-		 }
-
-		return false;
-
-		});
-
-		});
-		</script> 
-	</div>
-<script src="js/jquery.js"></script>
-  <script type="text/javascript">
-$(function() {
-
-
-$(".delbutton").click(function(){
-
-//Save the link in a variable called element
-var element = $(this);
-
- if(confirm("Sure you want to delete this Transaction?"))
-		  {
-
- $.ajax({
-   type: "GET",
-   url: "payment checkout/process.php",
-   data: info,
-   success: function(){
-   
-   }
- });
-         $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-		.animate({ opacity: "hide" }, "slow");
-
- }
-
-return false;
-
-});
-
-});
-</script> 
-
+</table>  
+ </div>
 	</section>
-          </div>
+    </div>
    </div>
- 
    
 </body>
 

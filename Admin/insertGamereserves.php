@@ -1,8 +1,8 @@
 <?php
    include('../config.php');
 
-$sql="INSERT INTO reserves(reserve_name,telephone,county,picture,animals,fee,email) 
-VALUES ('$_POST[name]', '$_POST[tel]', '$_POST[county]', '$_POST[picture]', '$_POST[total]', '$_POST[fee]', '$_POST[email]')";
+$sql="INSERT INTO reserves(reserve_name,telephone,county,picture,animals,fee,email,status) 
+VALUES ('$_POST[name]', '$_POST[tel]', '$_POST[county]', '$_POST[picture]', '$_POST[total]', '$_POST[fee]', '$_POST[email]','$_POST[status]')";
 
 if (!mysqli_query($conn,$sql))
   {

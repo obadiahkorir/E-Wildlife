@@ -10,7 +10,7 @@ function Header()
     $this->SetFont('Helvetica','',25);
 	$this->SetFontSize(40);
     //Move to the right
-    $this->Cell(90);
+    $this->Cell(80);
     //Line break
     $this->Ln();
 }
@@ -38,26 +38,23 @@ function BasicTable($header,$data)
 
 $this->SetFillColor(200,255,255);
 //$this->SetDrawColor(255, 0, 0);
-$w=array(20,40,27,20,20,20,20,27,18,15,15,15,15);
+$w=array(50,70,40,85,30,20,20,20,18,15,15,15,15);
 	
 	
 	//Header
-	$this->SetFont('Arial','B',11);
+	$this->SetFont('Arial','B',9);
 	for($i=0;$i<count($header);$i++)
 		$this->Cell($w[$i],7,$header[$i],1,0,'L',true);
 	$this->Ln();
 	
 	//Data
-	$this->SetFont('Arial','',10);
+	$this->SetFont('Arial','',12);
 	foreach ($data as $eachResult) 
 	{ //width
-		$this->Cell(20,6,$eachResult["Cust_Id"],1);
-		$this->Cell(40,6,$eachResult["FullName"],1);
-		$this->Cell(27,6,$eachResult["Phone"],1);
-        $this->Cell(20,6,$eachResult["Country"],1);
-		$this->Cell(20,6,$eachResult["City"],1);
-		$this->Cell(20,6,$eachResult["Adress"],1);
-		$this->Cell(47,6,$eachResult["Email"],1);
+		$this->Cell(50,6,$eachResult["FullNames"],1);
+		$this->Cell(70,6,$eachResult["To_Date"],1);
+		$this->Cell(40,6,$eachResult["No_Of_People"],1);
+
 		$this->Ln();
 		 	 	 	 	
 	}
@@ -72,7 +69,7 @@ $pdf=new PDF();
 
 	
 
-$header=array('Customer ID','Customer FullName','PHONE','Country','City','Address','Email ');
+$header=array('NAMES','DATE','NO OF PEOPLE');
 //Data loading
 //*** Load MySQL Data ***//
 
@@ -84,7 +81,7 @@ $db_host = 'localhost';
 $mysqli = new mysqli($db_host, $db_username, $db_password,$db_name);
 
 $currDate = date('Y-m-d');
-$strSQL = "Select* from customer";
+$strSQL = "Select* from bookings";
 $objQuery = mysqli_query($mysqli,$strSQL);
 $resultData = array();
 for ($i=0;$i<mysqli_num_rows($objQuery);$i++) {
@@ -99,12 +96,12 @@ $pdf->AddPage();
 	
 	$pdf->SetFont('Helvetica','b',14);
 	$pdf->Cell(55);
-	$pdf->Write(5, ' E-WildLife Tourist Report ');
+	$pdf->Write(5, 'E-WILDLIFE RESERVATION REPORTS');
 	$pdf->Ln();
 	
 	$pdf->SetFont('Helvetica','b',12);
 	$pdf->Cell(75);
-	$pdf->Write(5, 'TOURIST REPORT');
+	$pdf->Write(5, 'RESERVATION REPORTS');
 	$pdf->Ln();
 	
 	$pdf->Cell(22);
@@ -125,11 +122,11 @@ $pdf->AddPage();
 	$pdf->Ln(-1);
 	
 	//display numbers of reports
-	$result=mysqli_query($mysqli,"Select * from customer") or die ("Database query failed: $query" . mysqli_error());
+	$result=mysqli_query($mysqli,"Select * from BOOKINGS") or die ("Database query failed: $query" . mysqli_error());
 	
 	$count = mysqli_num_rows($result);
 	$pdf->Cell(0);
-	$pdf->Write(5, ' Employee Record: '.$count.'');
+	$pdf->Write(5, ' Reservation Record: '.$count.'');
 	$pdf->Ln();
 
 	$pdf->Ln(5);

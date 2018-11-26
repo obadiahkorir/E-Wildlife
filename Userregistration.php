@@ -4,7 +4,7 @@
     <title>E-Wildlife</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="images/logo.png"/>
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -37,19 +37,12 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Enter Email</span>
                     </div>
-                    
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <input class="input100" type="password" name="register_password">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Enter Password</span>
                     </div>
                 
-                    <div class="wrap-input100 validate-input" data-validate="Category is required">
-                        <input class="input100" type="password" name="category">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Enter Category</span>
-                    </div>
-
                     <div class="flex-sb-m w-full p-t-3 p-b-32">
                         <div class="contact100-form-checkbox">
                             <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
@@ -59,7 +52,7 @@
                         </div>
 
                         <div>
-                            <a href="#" name="reg_user" class="txt1">
+                            <a href="index.php" name="reg_user" class="txt1">
                                 Sign In
                             </a>
                         </div>

@@ -14,57 +14,6 @@ include("../config.php");
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/datetimepicker.js"></script> 
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
-	<script type="text/javascript">
-<!--
-
-function DateCheck()
-{
-if(document.book.date_from.value>document.book.date_to.value)
-{
-alert("error in date.please check and continue");
-return false;
-}
-else
-{
-return true;
-}
-}
-//-->
-</script>
-	<script type="text/javascript">
-	$(document).ready(function() 
-    	{ 
-      	  $(".tablesorter").tablesorter(); 
-   	 } 
-	);
-	$(document).ready(function() {
-
-	//When page loads...
-	$(".tab_content").hide(); //Hide all content
-	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
-	$(".tab_content:first").show(); //Show first tab content
-
-	//On Click Event
-	$("ul.tabs li").click(function() {
-
-		$("ul.tabs li").removeClass("active"); //Remove any "active" class
-		$(this).addClass("active"); //Add "active" class to selected tab
-		$(".tab_content").hide(); //Hide all tab content
-
-		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		$(activeTab).fadeIn(); //Fade in the active ID content
-		return false;
-	});
-
-});
-    </script>
-    <script type="text/javascript">
-    $(function(){
-        $('.column').equalHeight();
-    });
-</script>
-
-
 </head>
 <body>
 <div id="container">
@@ -94,10 +43,8 @@ return true;
             <nav>
                 <ul>
                     <li class="selected"><a href="customer_home.php">HOME</a></li>
-                    <li><a href="Register_Details.php">REGISTER</a></li>
                     <li><a href="Bookings.php">BOOKINGS</a></li>
                     <li><a href="ViewBookings.php">VIEW BOOKINGS</a></li>
-                    <li><a href="SearchSite.php">SEARCH SITE</a></li>
                     <li><a href="Profile.php">VIEW PROFILE</a></li>
                     <li><a href="ViewAnimals.php">VIEW ANIMALS</a></li>
                     <li><a href="ViewNews.php">NEWS</a></li>
@@ -120,9 +67,9 @@ return true;
 		<hr/>
 	    <h3> CUSTOMER OPEARTIONS</h3>
 		<ul class="toggle">
-		    <li class="icn_categories"><a href="Register_Details.php">Register</a></li>
 		      <li class="icn_categories"><a href="Bookings.php">Bookings</a></li>
 		        <li class="icn_categories"><a href="ViewBookings.php">View Bookings</a></li>
+		         <li class="icn_categories"><a href="ViewBookings.php">Cancel Bookings</a></li>
 		        <li class="icn_categories"><a href="ViewTourists.php">Tourist Details</a></li>
 		        <li class="icn_categories"><a href="ViewChats.php">Chats</a></li
 		</ul>
@@ -132,7 +79,7 @@ return true;
 		</ul>
 		<h3>GAMEPARK:</h3>
 		<ul class="toggle">
-		    <li class="icn_settings"><a href="ReservationReports.php">View GamePark</a></li>
+		    <li class="icn_settings"><a href="ViewGameparks.php">View GamePark</a></li>
 		</ul>
 		<h3>ANIMALS:</h3>
 		<ul class="toggle">
@@ -140,7 +87,6 @@ return true;
 		</ul>
 		<h3>CUSTOMER REPORTS:</h3>
 		<ul class="toggle">
-		    <li class="icn_settings"><a href="ReservationReports.php">Profile Report</a></li>
 			<li class="icn_settings"><a href="BookingsReport.php">Booking History</a></li>
 		</ul>
 		<h3>CUSTOMER</h3>
@@ -170,7 +116,7 @@ $result = mysqli_query($conn,"SELECT * FROM gamepark");
 		    <th>Telephone</th>				
     		<th>Address</th>
 			 <th>Postal Code</th>				
-    		<th> Email</th>
+    		<th> Status</th>
     		<th> Picture</th>
 			</tr>
 		</thead>
@@ -186,7 +132,7 @@ $result = mysqli_query($conn,"SELECT * FROM gamepark");
    <td><?php echo $row['Telephone']; ?></td>
 	<td><?php echo $row['Address']; ?></td>
 	<td><?php echo $row['PostalCode']; ?></td>
-	<td><?php echo $row['Email']; ?></td>
+	<td><?php echo $row['Status']; ?></td>
 	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td>
     </tr>
 

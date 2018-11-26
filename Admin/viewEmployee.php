@@ -165,7 +165,7 @@ $result = mysqli_query($conn,"SELECT * FROM employee");
 	<td><?php echo $row['IdNumber']; ?></td>
 	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td>
     <td> <a href="wareViewUpdate.php?update=<?php echo $row['Employee_ID']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['Employee_ID']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+     <a href="delete_employee.php?delete=<?php echo $row['Employee_ID']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
 
   <?php }mysqli_close($conn);?>

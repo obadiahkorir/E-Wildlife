@@ -40,8 +40,8 @@ include("../config.php");
                      <li><a href="Employee.php">Employees</a></li>
                      <li><a href="Tourist_home.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
-                     <li><a href="add_category.php">Reservations</a></li>
-                       <li><a href="Payments.php">Payments</a></li>
+                     <li><a href="add_new_reservations.php">Reservations</a></li>
+                       <li><a href="ViewPayments.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
@@ -71,7 +71,7 @@ include("../config.php");
 		
 		<h3>E-WILDLIFE REPORTS:</h3>
 		<ul class="toggle">
-		    <li class="icn_settings"><a href="OrderReports.php">Reservation Report</a></li>
+		    <li class="icn_settings"><a href="Reservations.php">Reservation Report</a></li>
 			<li class="icn_settings"><a href="EmployeeReport.php">Employee Report</a></li>
 			<li class="icn_settings"><a href="CustomerReport.php">Customer Report</a></li>
 			<li class="icn_settings"><a href="ProductReport.php"> WildLife Report</a></li>
@@ -94,12 +94,12 @@ include("../config.php");
 		</ul>
 		<h3>EMPLOYEES OPERATIONS:</h3>
 		<ul class="toggle">
-		    <li class="icn_add_user"><a href="add_new_employee.php">Add Employee</a></li>
+		    <li class="icn_add_user"><a href="add_employee.php">Add Employee</a></li>
 		    <li class="icn_categories"><a href="viewEmployee.php">View Employees</a></li>
 		</ul>
 		<h3>MESSAGE OPERATIONS:</h3>
 		<ul class="toggle">
-		    <li class="icn_add_user"><a href="add_new_employee.php">Add New Message</a></li>
+		    <li class="icn_add_user"><a href="viewchats.php">Add New Message</a></li>
 		     <li class="icn_add_user"><a href="">Reply Chat</a></li>
 		      <li class="icn_add_user"><a href="">Cancel Chats</a></li>
 		    <li class="icn_categories"><a href="viewchats.php">View Messages</a></li>
@@ -124,25 +124,25 @@ include("../config.php");
 	</aside>
 	<section id="main" class="column">
 	
-	<h4 class="alert_info"><strong>EMPLOYEE DETAILS</strong></h4>
+	<h4 class="alert_info"><strong>PAYMENTS</strong></h4>
 
 <?php
-$result = mysqli_query($conn,"SELECT * FROM employee");
+$result = mysqli_query($conn,"SELECT * FROM payment");
 ?>
       <div id="tab1" class="tab_content">
   <table class="tablesorter" cellspacing="0"> 
 
 			
-			<thead><tr> <th colspan="7"> Employee Data Record</th>  </tr> <thead>
+			<thead><tr> <th colspan="7"> Tourist Payment Record</th>  </tr> <thead>
 		<thead>
 			<tr>
    		    <th>Check</th> 
-    	     <th>Employee ID</th>
-             <th> Employee Name</th>			  
-    		<th>User Name</th>
-		    <th>Password</th>
-           <th>Picture</th>			
-    		<th>Actions</th>
+    	     <th>PAYMENT ID</th>
+             <th> FULL Name</th>			  
+    		<th>EMAIL</th>
+		    <th>NO OF PEOPLE</th>
+           <th>AMOUNT</th>	
+           <th>MPESA ID</th>			
 			</tr>
 		</thead>
 		<tbody>
@@ -151,12 +151,12 @@ $result = mysqli_query($conn,"SELECT * FROM employee");
 
       <tr>
     <td><input type="checkbox"></td>
-    <td><?Php echo $row['Employee_ID']; ?></td>
-    <td><?php echo $row['Employee_Name']; ?></td>
-   <td><?php echo $row['Username']; ?></td>
-	<td><?php echo $row['Password']; ?></td>
-	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td>
-    
+    <td><?Php echo $row['payment_id']; ?></td>
+    <td><?php echo $row['Full_Name']; ?></td>
+   <td><?php echo $row['Email']; ?></td>
+	<td><?php echo $row['No_of_people']; ?></td>
+	<td><?php echo $row['Total_Amount']; ?></td>
+	<td><?php echo $row['Mpesa']; ?></td>
     </tr>
 
   <?php }mysqli_close($conn);?>

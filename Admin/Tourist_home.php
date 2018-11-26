@@ -259,7 +259,7 @@ $result = mysqli_query($conn,"SELECT * FROM Customer");
          <td><?php echo $row['PostalCode']; ?></td>
 	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td> 
 	<td> <a href="wareViewUpdate.php?update=<?php echo $row['Cust_Id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['Cust_Id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+     <a href="delete_tourist.php?delete=<?php echo $row['Cust_Id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
    </tr>
   <?php }mysqli_close($conn);?>
       </tbody>

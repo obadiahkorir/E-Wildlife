@@ -1,8 +1,8 @@
 <?php
    include('../config.php');
 
-$sql="INSERT INTO gamepark (County,Address,PostalCode,Email,Gamepark,Telephone,animals,Price,Picture) 
-VALUES ('$_POST[county]', '$_POST[address]', '$_POST[pcode]', '$_POST[email]', '$_POST[gamepark]', '$_POST[tel]', '$_POST[animals]', '$_POST[fee]', '$_POST[picture]')";
+$sql="INSERT INTO gamepark (County,Address,PostalCode,Email,Gamepark,Telephone,animals,Price,Status,Picture) 
+VALUES ('$_POST[county]', '$_POST[address]', '$_POST[pcode]', '$_POST[email]', '$_POST[gamepark]', '$_POST[tel]', '$_POST[animals]', '$_POST[fee]', '$_POST[picture]','$_POST[status]')";
 
 if (!mysqli_query($conn,$sql))
   {

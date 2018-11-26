@@ -80,7 +80,7 @@
                      <li><a href="Tourist_home.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
                      <li><a href="Reservations.php">Reservations</a></li>
-                       <li><a href="add_category.php">Payments</a></li>
+                       <li><a href="ViewPayments.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
@@ -203,7 +203,7 @@ $result = mysqli_query($conn,"SELECT * FROM chatting");
    <td><?php echo $row['message']; ?></td>
 	<td><?php echo $row['date_time']; ?></td>
 	<td><?php echo $row['ip_address']; ?></td>
-    <td> <a href="PaymentDelete.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+    <td> <a href="delete_message.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr
 	
   <?php }mysqli_close($conn);?>

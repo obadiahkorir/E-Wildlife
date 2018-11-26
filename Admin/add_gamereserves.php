@@ -12,38 +12,6 @@ include("../config.php");
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() 
-    	{ 
-      	  $(".tablesorter").tablesorter(); 
-   	 } 
-	);
-	$(document).ready(function() {
-
-	//When page loads...
-	$(".tab_content").hide(); //Hide all content
-	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
-	$(".tab_content:first").show(); //Show first tab content
-
-	//On Click Event
-	$("ul.tabs li").click(function() {
-
-		$("ul.tabs li").removeClass("active"); //Remove any "active" class
-		$(this).addClass("active"); //Add "active" class to selected tab
-		$(".tab_content").hide(); //Hide all tab content
-
-		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		$(activeTab).fadeIn(); //Fade in the active ID content
-		return false;
-	});
-
-});
-    </script>
-    <script type="text/javascript">
-    $(function(){
-        $('.column').equalHeight();
-    });
-</script>
 </head>
 <body>
 <div id="container"> 
@@ -67,8 +35,8 @@ include("../config.php");
                      <li><a href="Employee.php">Employees</a></li>
                      <li><a href="Employee.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
-                     <li><a href="add_category.php">Reservations</a></li>
-                       <li><a href="add_category.php">Payments</a></li>
+                     <li><a href="add_reservations.php">Reservations</a></li>
+                       <li><a href="ViewPayments.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
@@ -77,8 +45,8 @@ include("../config.php");
 	</section>   	
 <aside id="sidebar" class="column">
 				<div id="search">
-					<form action="searchware.php" method="post" accept-charset="utf-8">
-						<input type="text"  title="Search..." class="blink field"  placeholder="Search Warehouse"   name='search' size=60 maxlength=100 />
+					<form action="searchware.Sphp" method="post" accept-charset="utf-8">
+						<input type="text"  title="Search..." class="blink field"  placeholder="Search GameReserves"   name='search' size=60 maxlength=100 />
 						<input class="search-button" type="submit" value="Submit" />
 						<div class="cl">&nbsp;</div>
 					</form>
@@ -127,7 +95,7 @@ include("../config.php");
 		<ul class="toggle">
 			 <li class="icn_add_user"><a href="add_new_reservations.php">Add Reservations</a></li>
 		    <li class="icn_categories"><a href="viewReservations.php">Reservation Details</a></li>
-     		<li class="icn_categories"><a href="customerTable.php">Cancel Reservations</a></li>
+     		<li class="icn_categories"><a href="cancelReservation.php">Cancel Reservations</a></li>
      		<li class="icn_categories"><a href="customerTable.php">Approve  Reservations</a></li>
 		</ul>
 		<h3>TOURIST OPERATIONS:</h3>
@@ -192,7 +160,7 @@ include("../config.php");
 	</td>
    <td> 
     <label>Telephone:</label>
-    <input type="text" name="city"  id="tel"/>
+    <input type="text" name="tel"  id="tel"/>
 	<span class="error">This is an error</span>	
   </td>
    <td>      
@@ -201,6 +169,18 @@ include("../config.php");
 	<span id="pass-info"> </span>
    </td>
    </tr>
+   <tr>
+   <td>      
+	<label> Picture:</label>
+	<input type="text" name="picture"  id="picture"/>
+	<span id="pass-info"> </span>
+   </td>
+   <td>
+   <label> Status:</label>
+	<input type="text" name="status"  id="status"/>
+	<span id="pass-info"> </span>
+   </td>
+</tr>
    <tr>
 	<div class="bottom">
 	<td colspan="3">	
@@ -226,7 +206,7 @@ $result = mysqli_query($conn,"SELECT * FROM reserves");
     		<th>Telephone</th>
 		    <th>County</th>				
     		<th>Total Animals</th>
-			 <th>Entrance Fee</th>				
+			<th>Entrance Fee</th>				
     		<th> Email</th>
     		<th> Picture</th>
     		<th>Actions</th>
@@ -245,15 +225,15 @@ $result = mysqli_query($conn,"SELECT * FROM reserves");
 	<td><?php echo $row['fee']; ?></td>
 	<td><?php echo $row['email']; ?></td>
 	<td><img src="../images/<?php echo $row['picture']; ?>" width="40" height="40"></td>
-    <td> <a href="wareViewUpdate.php?update=<?php echo $row['id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+    <td> <a href="reserves_view_update.php?update=<?php echo $row['id']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
+     <a href="delete_gamereserve.php?delete=<?php echo $row['id']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
   <?php }mysqli_close($conn);?>
       </tbody>
 </table> 
  </div> 	
-	</section>
-     </div>
-   </div> 
+</section>
+</div>
+</div> 
 </body>
 </html>

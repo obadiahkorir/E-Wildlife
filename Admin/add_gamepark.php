@@ -42,8 +42,8 @@ include("../config.php");
                      <li><a href="Employee.php">Employees</a></li>
                      <li><a href="Employee.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
-                     <li><a href="add_category.php">Reservations</a></li>
-                       <li><a href="add_category.php">Payments</a></li>
+                     <li><a href="add_reservations.php">Reservations</a></li>
+                       <li><a href="ViewPayments.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
@@ -187,7 +187,13 @@ include("../config.php");
 		<input type="text" name="picture" id="picture"/>
 		<span class="error">This is an error</span>	
 	</td>
+
    </tr>
+   <td>  
+		<label>Status:</label>
+		<input type="text" name="status" id="status" required="" />
+		<span class="error">This is an error</span>
+	</td>
    <tr>
 						<div class="bottom">
 						<td colspan="3">	

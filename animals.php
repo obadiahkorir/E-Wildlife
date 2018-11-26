@@ -8,7 +8,7 @@ include("config.php");
 <head>
 	<title> E-WildLife </title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<link rel="shortcut icon" href="images/favicon.png" />
+		<link rel="shortcut icon" href="images/logo.png" />
 	     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="css/proStyle.css" type="text/css" media="all" />
 	 	<link rel="stylesheet" href="css/cart.css" type="text/css" media="all" />
@@ -19,71 +19,6 @@ include("config.php");
 	<script src="js/jquery.jcarousel.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/functions.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-
-	// load messages every 1000 milliseconds from server.
-	load_data = {'fetch':1};
-	window.setInterval(function(){
-	 $.post('shout.php', load_data,  function(data) {
-		$('.message_box').html(data);
-		var scrolltoh = $('.message_box')[0].scrollHeight;
-		$('.message_box').scrollTop(scrolltoh);
-	 });
-	}, 1000);
-	
-	//method to trigger when user hits enter key
-	$("#shout_message").keypress(function(evt) {
-		if(evt.which == 13) {
-				var iusername = $('#shout_username').val();
-				var imessage = $('#shout_message').val();
-				post_data = {'username':iusername, 'message':imessage};
-			 	
-				//send data to "shout.php" using jQuery $.post()
-				$.post('shout.php', post_data, function(data) {
-					
-					//append data into messagebox with jQuery fade effect!
-					$(data).hide().appendTo('.message_box').fadeIn();
-	
-					//keep scrolled to bottom of chat!
-					var scrolltoh = $('.message_box')[0].scrollHeight;
-					$('.message_box').scrollTop(scrolltoh);
-					
-					//reset value of message box
-					$('#shout_message').val('');
-					
-				}).fail(function(err) { 
-				
-				//alert HTTP server error
-				alert(err.statusText); 
-				});
-			}
-	});
-	
-	//toggle hide/show shout box
-	$(".close_btn").click(function (e) {
-		//get CSS display state of .toggle_chat element
-		var toggleState = $('.toggle_chat').css('display');
-		
-		//toggle show/hide chat box
-		$('.toggle_chat').slideToggle();
-		
-		//use toggleState var to change close/open icon image
-		if(toggleState == 'block')
-		{
-			$(".header div").attr('class', 'open_btn');
-		}else{
-			$(".header div").attr('class', 'close_btn');
-		}
-		 
-		 
-	});
-});
-
-</script>
-
-<!-- WAA DHAMAADKA JQueryga CHaTTIng Ka-->
 	
 </head>
 <body>
@@ -97,8 +32,9 @@ $(document).ready(function() {
 				<div id="top-nav">
 					<ul>
 					
-						<li><a href="contact.php"" title="contact"><span>Contact</span></a></li>
-						<li><a href="Sign In.php" title="Sign In"><span>Sign In</span></a></li>
+						<li> <a href="Userregistration.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> REGISTER</span></button></a></li>
+					  <li><a href="Sign In.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> LOGIN</span></button></a></li>
+					  <li> <a href="contact.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> CONTACT</span></button></a></li>
 					</ul>
 				</div>
 				
@@ -106,8 +42,6 @@ $(document).ready(function() {
 			</div>
 			<!-- End Shell -->
 		</div>
-		<!-- End Header -->
-		<!-- Begin Navigation -->
 		<div id="navigation">
 			<!-- Begin Shell -->
 			<div class="shell">
@@ -135,16 +69,13 @@ $(document).ready(function() {
 						</div>
 					</li>
 					  <li><a href="about.php">About Us</a></li>
-					  <li><a href="customer.php">Free Sign Up</a> </li>
 				</ul>
 				<div class="cl">&nbsp;</div>
 			</div>
 			<!-- End Shell -->
 		</div>
 	
-		<div id="slider">
-		
-			<!-- End Shell -->
+		<div id="slider">	
 		</div>
 		<div id="main" class="shell">
 			<marquee><h2>BOOK YOUR FAVOURITE GAME PARK</h2></marquee>
@@ -203,11 +134,11 @@ $result = mysqli_query($conn,"SELECT * FROM animals");
 		<thead>
 			<tr>
    		    <th>Check</th> 
-            <th>Animal Name</th>			  
+            <th>Animal Name</th>
+            <th>Game Park</th>			  
 		    <th>Entry Fee</th>
 		    <th>Total Animals</th>
 		    <th>County</th>
-		
             <th>Picture</th>	
             <th>Book</th>			
     		
@@ -219,8 +150,8 @@ $result = mysqli_query($conn,"SELECT * FROM animals");
   	?>
       <tr>
     <td><input type="checkbox"></td>
-    <td><?Php echo $row['animals_id']; ?></td>
     <td><?php echo $row['animal_name']; ?></td>
+    <td><?php echo $row['Gamepark']; ?></td>
     <td><?php echo $row['entry_fee']; ?></td>
 	<td><?php echo $row['total_animals']; ?></td>
 	<td><?php echo $row['county']; ?></td>

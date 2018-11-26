@@ -9,7 +9,7 @@ include("config.php");
 <head>
 	<title> E-WildLife </title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<link rel="shortcut icon" href="images/favicon.png" />
+		<link rel="shortcut icon" href="images/logo.png" />
 	    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="css/proStyle.css" type="text/css" media="all" />
 	 	<link rel="stylesheet" href="css/cart.css" type="text/css" media="all" />
@@ -97,15 +97,14 @@ $(document).ready(function() {
 				<h1 id="logo"><a class="notext" href="#" >E-WildLife</a></h1>
 				<div id="top-nav">
 					<ul>
-					
-						<li><a href="contact.php"" title="contact"><span>Contact</span></a></li>
-						<li><a href="Sign In.php" title="Sign In"><span>Sign In</span></a></li>
+					<li> <a href="Userregistration.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> REGISTER</span></button></a></li>
+					  <li><a href="Sign In.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> LOGIN</span></button></a></li>
+					  <li> <a href="contact.php" <button name="save" type="submit" id="delbutton" title="Click to Register"  class="a-btn" > <span class="a-btn-text"> CONTACT</span></button></a></li>
 					</ul>
 				</div>
 				
  <div class="clear"></div>
 			</div>
-			<!-- End Shell -->
 		</div>
 	
 		<div id="navigation">
@@ -127,7 +126,6 @@ $(document).ready(function() {
 						</div>
 					</li>
 					  <li><a href="about.php">About Us</a></li>
-					  <li><a href="customer.php">Free Sign Up</a> </li>
 				</ul>
 				<div class="cl">&nbsp;</div>
 			</div>
@@ -264,9 +262,5 @@ $result = mysqli_query($conn,"SELECT * FROM parks");
 				<!-- End Shell -->
 			</div>
 		</div>
-		<!-- End Footer -->
-		
-		
-	<!-- End Wrapper -->
 </body>
 </html>

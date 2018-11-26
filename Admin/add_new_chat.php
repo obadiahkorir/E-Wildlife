@@ -1,63 +1,68 @@
-<?php 
-session_start();
+<?php
 include("../config.php");
- ?>
+?>
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8"/>
-	<title>E-WildLife </title>
+	<title>ADMIN </title>
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
 	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
-	
-
 </head>
-
-
 <body>
 <div id="container"> 
 	   <div id="header">
+ 
+         
 		<div id="logo-banner">
+		   
 				<div id="logo">
-				<a href="index.php"><img src="images/logo.png" alt="" /></a>
+					<a href="index.php"><img src="images/logo.png" alt="" /></a>
 				</div>
+				
 				<div id="banner">
+                
 				</div>
 		</div>
-		</div> 
+		</div>
 	<div id="content-wrap">	
 	
 	<section id="secondary_bar">
-                <nav>
-                <ul>
+             <nav>
+                  <ul>
                     <li class="selected"><a href="index.php">Home</a></li>
                     <li><a href="add_animal.php">Animals</a></li>
                     <li><a href="add_gamepark.php">GameParks</a></li>
                     <li><a href="add_gamereserves.php">GameReserves</a></li>
                      <li><a href="Employee.php">Employees</a></li>
-                     <li><a href="Employee.php">Tourists</a></li>
+                     <li><a href="Tourist_home.php">Tourists</a></li>
                      <li><a href="viewchats.php">Messages</a></li>
-                     <li><a href="add_category.php">Reservations</a></li>
+                     <li><a href="Reservations.php">Reservations</a></li>
                        <li><a href="add_category.php">Payments</a></li>
                       <li><a href="Backup.php">BackUp Database </a></li>
                     <li class="logout"> <span class="check"> 
 					
-                </ul>	
+                </ul>
+				
             </nav>
-	</section>  	
+				
+            </nav>
+	</section>
+	   	
 <aside id="sidebar" class="column">
+			<!-- Begin Search -->
 				<div id="search">
-					<form action="searchware.php" method="post" accept-charset="utf-8">
-						<input type="text"  title="Search..." class="blink field"  placeholder="Search Warehouse"   name='search' size=60 maxlength=100 />
+					<form action="searchemplo.php" method="post" accept-charset="utf-8">
+						<input type="text"  title="Search..." class="blink field"  placeholder="Search Employee"  name='search' size=60 maxlength=100/>
 						<input class="search-button" type="submit" value="Submit" />
 						<div class="cl">&nbsp;</div>
 					</form>
 					
 				</div>
+				<!-- End Search -->
 		<hr/>
 		 <h3> E-WildLife Database Backup:</h3>
 		<ul class="toggle">
@@ -103,7 +108,7 @@ include("../config.php");
 		<ul class="toggle">
 			 <li class="icn_add_user"><a href="add_new_reservations.php">Add Reservations</a></li>
 		    <li class="icn_categories"><a href="viewReservations.php">Reservation Details</a></li>
-     		<li class="icn_categories"><a href="cancelReservations.php">Cancel Reservations</a></li>
+     		<li class="icn_categories"><a href="customerTable.php">Cancel Reservations</a></li>
      		<li class="icn_categories"><a href="customerTable.php">Approve  Reservations</a></li>
 		</ul>
 		<h3>TOURIST OPERATIONS:</h3>
@@ -118,84 +123,47 @@ include("../config.php");
 		</ul>
 	</aside>
 	<section id="main" class="column">
-	<h4 class="alert_info">Welcome To <strong>E-WILDLIFE MAMAGEMENT SYSTEM</strong> </h4>
 	
-	<div id="form_wrapper" class="form_wrapper"  >
+	<h4 class="alert_info"> <strong>ADD NEW MESSAGE</strong></h4>
+	<div id="form_wrapper" class="form_wrapper">
+	
 		 <table>
-					<form class="register active" id="myForm" action="insertAnimals.php"  method="POST" enctype="multipart/form-data" name="addanimals" onsubmit="return validateForm()">
-					<th colspan="3"><h2>ADD NEW ANIMAL:</h2> </th> 			
-	<tr>
-    <td>  
-		<label> Animal Name:</label>
-		<input type="text" name="wname" id="wareValid"/>
+					<form class="register active" id="myForm"action="insertEmployee.php"  method="POST" >
+					<th colspan="3"><h2>Add Chat</h2> </th> 				
+        <tr>
+       <td>  
+	  <label>Full Name:</label>
+		<input type="text" id="empValid" name="fullname" placeholder="Full names" />
 		<span class="error">This is an error</span>
-	</td>
-   <td>  
-	<label>County:</label>
-		<select name="country" id="select">
-		  <option value="KY" countrynum="93">TAITA TAVETA</option>
-		  <option value="US" countrynum="358">NAIROBI</option>
-		  <option value="CHI" countrynum="355">UASIN-NGISHU</option>
-</select>    
-   </td>
-   <td>  
-		<label>Email:</label>
-		<input type="text" name="email" id="email"/>
-		<span class="error">This is an error</span>
-		
-	</td>
+	  </td>
+      <td>   
+	     <label>Message:</label>
 
-   </tr>
-
-   <tr>
-    <td>  
-		<label> Gamepark:</label>
-		<input type="text" name="wname" id="wareValid"/>
+		<input type="text" id="message" name="message" placeholder="Message" />
 		<span class="error">This is an error</span>
-	</td>
-   <td>  
-	<label>Category:</label>
-		<select name="country" id="select">
-		  <option value="KY" countrynum="93">Birds</option>
-		  <option value="US" countrynum="358">Animals</option>		 
-</select>    
-   </td>
-   <td>  
-		<label>Type:</label>
-		<input type="text" name="email" id="email"/>
-		<span class="error">This is an error</span>	
-	</td>
+      </td>
+      
    </tr>
-   <tr>
-    <td>  
-		<label> Address:</label>
-		<input type="text" name="address"  id="address"/>
-		<span class="error">This is an error</span>                         
-	</td>
-   <td
-       		<label>Total:</label>
-		<input type="text" name="city"  id="wareValid"/>	
-		<span class="error">This is an error</span>	
-  </td>
-   <td>       
-	    <label> Postal Code:</label>
-	<input type="text" name="pcode"  id="pcode"/>
-		<span id="pass-info"> </span>
-   </td>
-   </tr>
-   <tr>
 						<div class="bottom">
+
 						<td colspan="3">	
-						<button name="save" id="myButton" class="a-btn"> <span class="a-btn-text"> REGISTER ANIMAL </span></ </button>
+						
+						<button name="submit" id="submit" title="Click to Save"  class="a-btn"> <span class="a-btn-text"> Submit</span></button>
+						
+						</td>
+							
 							<div class="clear"></div>
 						</div>
-   </tr>
-</form>
-</table>
-	</div>	
+
+	</form>
+					
+	</table>
+	</div>
+
 	</section>
           </div>
    </div>
+    
 </body>
 
 </html>

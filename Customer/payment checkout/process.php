@@ -7,7 +7,7 @@ include("../config.php");
 <head>
 	<title>E-WildLIfe System </title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	   <link rel="shortcut icon" href="images/favicon.png" />
+	   <link rel="shortcut icon" href="images/logo.png" />
 		<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="../css/proStyle.css" type="text/css" media="all" />
 	   	<link rel="stylesheet" href="../css/userlogin.css" type="text/css" media="all" />
@@ -82,9 +82,10 @@ include("../config.php");
             <center><h1><span class="check"> <?php echo "Welcome Mr/Miss:   ". "<font color='##fa5400'><i><b>".$login_session."</b></i></font>" ;?> </span></h1></center>
             <div id="wwrapper">
                 <div id="steps">
-				
+				<?php
+$result = mysqli_query($conn,"SELECT * FROM bookings where email='$login_session'");
+?>
          <form id="formElem" name="formElem"  action="InsertPayment.php" method="POST" class="myForm">
-				
                         <fieldset class="step">
                             <legend>Account Verification
 				<h4 Align="right">Total Fee : <big style="color:green"></big></h4>
@@ -96,7 +97,8 @@ include("../config.php");
                             </p>
                             <p>
                                 <label for="amount">Enter Amount</label>
-                                <input id="amount" name="amount" placeholder="kSH 7800" type="int" AUTOCOMPLETE=OFF />
+                                <input id="amount" name="amount" value="
+                                placeholder="kSH 7800" type="int" AUTOCOMPLETE=OFF />
                             </p>
                             <p>
                                 <label for="country">Postal Code</label>
@@ -111,7 +113,7 @@ include("../config.php");
                         <fieldset class="step">
 
                          <legend>Personal Details
-		          <h4 Align="right">Total Fee: <big style="color:green">;</big></h4>
+		          
 						 </legend>
                            <p>
                                 <label for="phone"> Address:</label>
@@ -143,6 +145,7 @@ include("../config.php");
 							
                         </fieldset>
                         <fieldset class="step">
+
                             <legend>Payment
 							
 							</legend>
@@ -183,8 +186,9 @@ include("../config.php");
                                 <button id="registerButton" type="submit"   name="submit"  title="Click On Payment Method"> Proceed</button>
                             </p>
                         </fieldset>
+                        
                     </form>
-
+ <?php }mysqli_close($conn);?>
                 </div>
                 
             </div>

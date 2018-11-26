@@ -148,6 +148,7 @@ $result = mysqli_query($conn,"SELECT * FROM gamepark");
     		<th>Address</th>
 			 <th>Postal Code</th>				
     		<th> Email</th>
+    		<th> Status</th>
     		<th> Picture</th>
     		<th>Actions</th>
 			</tr>
@@ -165,9 +166,10 @@ $result = mysqli_query($conn,"SELECT * FROM gamepark");
 	<td><?php echo $row['Address']; ?></td>
 	<td><?php echo $row['PostalCode']; ?></td>
 	<td><?php echo $row['Email']; ?></td>
+	<td><?php echo $row['Status']; ?></td>
 	<td><img src="../images/<?php echo $row['Picture']; ?>" width="40" height="40"></td>
     <td> <a href="wareViewUpdate.php?update=<?php echo $row['Gamepark_ID']; ?>"  onClick="edit(this);" title="empEdit" >  <input type="image" src="images/icn_edit.png" title="Edit"> </a>
-     <a href="DeleteWarehouse.php?delete=<?php echo $row['Gamepark_ID']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
+     <a href="delete_gamepark.php?delete=<?php echo $row['Gamepark_ID']; ?>" onClick="del(this);" title="Delete" ><input type="image" src="images/icn_trash.png" title="Trash">  </a></td>
     </tr>
 
   <?php }mysqli_close($conn);?>
